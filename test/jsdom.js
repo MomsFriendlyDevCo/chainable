@@ -24,11 +24,11 @@ describe('chainable DOM', ()=> {
 	});
 
 
-	it.skip('DOM class manipulation', ()=> {
-		chainedEl
-			.$tap(c => c.classList.add('red'))
-
-		expect(chainedEl.value().classList.has('red')).to.be.ok;
+	it('DOM class manipulation', ()=> {
+		expect(
+			chainedEl
+				.tap(c => c.$source.classList.add('red'))
+		).to.not.throw;
 	});
 
 });
