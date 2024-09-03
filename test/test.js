@@ -10,6 +10,7 @@ describe('example chainables', ()=> {
 	};
 	let chained = chain(obj);
 
+
 	it('wrap source object', ()=> {
 		// expect(chained).to.be.an('object');
 		expect(chained).to.have.property('$method');
@@ -19,15 +20,18 @@ describe('example chainables', ()=> {
 		expect(chained.$source).to.be.an('object');
 	});
 
+
 	it('call pure chainable methods', ()=> {
 		expect(chained.$method('a')).to.equal(chained);
 	});
+
 
 	it('call mutating chainable methods', ()=> {
 		expect(chained.$method('setV', 2)).to.equal(chained);
 		expect(chained.$source.v).to.equal(2);
 		expect(chained.$value().v).to.equal(2);
 	});
+
 
 	it('use setters', ()=> {
 		expect(chained.$set('v', 3)).to.equal(chained);
@@ -41,7 +45,8 @@ describe('example chainables', ()=> {
 		expect(chained.$value().z).to.equal(2);
 	});
 
-	it('dynamicly proxy methods', ()=> {
+
+	it('proxy methods', ()=> {
 		expect(chained.a).to.be.a('function');
 		expect(chained.a()).to.not.throw;
 
@@ -49,6 +54,28 @@ describe('example chainables', ()=> {
 			.setV(5)
 			.$value()
 		).to.have.property('v', 5);
+	});
+
+
+	it('dynamically proxy new methods', ()=> {
+		chained.$set({
+			setZ(newZ) { // Glue new method to source
+				this.z = newZ;
+			},
+		});
+
+		expect(chained
+			.setZ(3)
+			.$value()
+		).to.have.property('z', 3);
+	});
+
+
+	it('access methods without dollar prefix', ()=> {
+		expect(chained
+			.setV(6)
+			.value()
+		).to.have.property('v', 6);
 	});
 
 });
