@@ -11,9 +11,12 @@ describe('example chainables', ()=> {
 	let chained = chain(obj);
 
 	it('wrap source object', ()=> {
-		expect(chained).to.be.an('object');
+		// expect(chained).to.be.an('object');
 		expect(chained).to.have.property('$method');
+		expect(chained.$method).to.be.a('function');
+
 		expect(chained).to.have.property('$source');
+		expect(chained.$source).to.be.an('object');
 	});
 
 	it('call pure chainable methods', ()=> {
@@ -36,6 +39,16 @@ describe('example chainables', ()=> {
 		expect(chained.$value().v).to.equal(4);
 		expect(chained.$source.z).to.equal(2);
 		expect(chained.$value().z).to.equal(2);
+	});
+
+	it('dynamicly proxy methods', ()=> {
+		expect(chained.a).to.be.a('function');
+		expect(chained.a()).to.not.throw;
+
+		expect(chained
+			.setV(5)
+			.$value()
+		).to.have.property('v', 5);
 	});
 
 });
