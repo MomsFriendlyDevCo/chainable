@@ -77,4 +77,32 @@ describe('example chainables', ()=> {
 		).to.have.property('v', 6);
 	});
 
+
+	it('use tap', ()=> {
+		let tapped = false;
+
+		expect(chained
+			.tap(v => {
+				tapped = true;
+				return null;
+			})
+		).to.not.throw;
+
+		expect(tapped).to.be.ok;
+	});
+
+	it('use thru', ()=> {
+		let thruCalled = false;
+
+		expect(chained
+			.thru(v => {
+				thruCalled = true;
+				return {c: 1};
+			})
+			.value()
+		).to.be.deep.equal({c: 1});
+
+		expect(thruCalled).to.be.ok;
+	});
+
 });
