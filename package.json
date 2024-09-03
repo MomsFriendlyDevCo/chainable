@@ -1,0 +1,37 @@
+{
+  "name": "@momsfriendlydevco/chainable",
+  "version": "1.0.0",
+  "description": "Tiny, no-dependency chainable object wrapper",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha"
+  },
+  "keywords": [
+    "chainable",
+    "chain"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/chainable.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MomsFriendlyDevCo/chainable.git"
+  },
+  "author": "Matt Carter <matt@mfdc.biz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MomsFriendlyDevCo/chainable/issues"
+  },
+  "homepage": "https://github.com/MomsFriendlyDevCo/chainable#readme",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=18.17.1"
+  },
+  "devDependencies": {
+    "@momsfriendlydevco/eslint-config": "^2.0.4",
+    "chai": "^5.1.1",
+    "eslint": "^9.9.1",
+    "mocha": "^10.7.3"
+  }
+}
