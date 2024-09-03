@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Tiny, no-dependency chainable object wrapper",
   "scripts": {
+    "build": "esbuild --platform=browser --format=esm --bundle lib/chainable.js --outfile=dist/chainable.js --minify",
     "lint": "eslint .",
     "test": "mocha"
   },
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@momsfriendlydevco/eslint-config": "^2.0.4",
     "chai": "^5.1.1",
+    "esbuild": "^0.23.1",
     "eslint": "^9.9.1",
     "mocha": "^10.7.3"
   }
