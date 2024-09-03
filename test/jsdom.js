@@ -27,6 +27,9 @@ describe('chainable DOM', ()=> {
 	it('DOM class manipulation', ()=> {
 		expect(
 			chainedEl
+				.set('style.position', 'absolute')
+				.set('style.top', '0px')
+				.set('style.left', '0px')
 				.tap(c => c.$source.classList.add('red'))
 		).to.not.throw;
 	});

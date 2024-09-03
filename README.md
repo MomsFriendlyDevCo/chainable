@@ -2,6 +2,8 @@
 ============================
 Make any JavaScript object a chainable, functional interface.
 
+This library is _interntionally_ tiny and dependency free. The entire library, minified is less than 1kb!
+
 
 **Make the tiny Mitt event library chainable**
 
@@ -24,9 +26,40 @@ import chainable from '@momsfriendlydevco/chainable';
 // Make a chainable DOM object
 chainable(document.createElement('div'));
     .addEventListener('click', ()=> { /* Handle clicks */ })
-    .set('style.position', 'aboslute') // Set a deeply nested property
+    .set('style.position', 'absolute') // Set a deeply nested property
     .value() // Output the original object (if needed)
 ```
+
+
+Why?
+----
+This library exists this because handling chainability in some non-chainable interfaces gets repetitive.
+
+```javascript
+// Horrible <div> setup using the native DOM
+let widget = document.createElement('div');
+widget.addEventListener('click', ()=> { /* Handle click */ });
+widget.style.position = 'absolute';
+widget.style.top = '0px';
+widget.style.left = '0px';
+widget.classList.add('red');
+
+document.body.append(widget);
+```
+
+```javascript
+// Equivelent using chainable
+document.append(
+    chainable(document.createElement('div'));
+        .addEventListener('click', ()=> { /* Handle clicks */ })
+        .set('style.position', 'absolute') // Set a deeply nested property
+        .set('style.top', '0px')
+        .set('style.left', '0px')
+        .tap(el => el.$source.classList.add('red'))
+        .value() // Output the original raw DOMElement
+);
+```
+
 
 
 API
