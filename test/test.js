@@ -1,4 +1,4 @@
-import chain from '../lib/chainable.js';
+import chainable from '../lib/chainable.js';
 import {expect} from 'chai';
 
 describe('example chainables', ()=> {
@@ -8,11 +8,10 @@ describe('example chainables', ()=> {
 		v: 1,
 		z: 1,
 	};
-	let chained = chain(obj);
+	let chained = chainable(obj);
 
 
 	it('wrap source object', ()=> {
-		// expect(chained).to.be.an('object');
 		expect(chained).to.have.property('$method');
 		expect(chained.$method).to.be.a('function');
 
