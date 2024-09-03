@@ -5,6 +5,9 @@ describe('example chainables', ()=> {
 	let obj = {
 		a() { return 'a!' },
 		setV(newV) { obj.v = newV },
+		x: {
+			xx: 1,
+		},
 		v: 1,
 		z: 1,
 	};
@@ -32,7 +35,7 @@ describe('example chainables', ()=> {
 	});
 
 
-	it('use setters', ()=> {
+	it('use simple setters', ()=> {
 		expect(chained.$set('v', 3)).to.equal(chained);
 		expect(chained.$source.v).to.equal(3);
 		expect(chained.$value().v).to.equal(3);
@@ -42,6 +45,21 @@ describe('example chainables', ()=> {
 		expect(chained.$value().v).to.equal(4);
 		expect(chained.$source.z).to.equal(2);
 		expect(chained.$value().z).to.equal(2);
+	});
+
+
+	it('use nested setters', ()=> {
+		expect(chained.$set('x.xx', 2));
+		expect(chained.$source.x.xx).to.equal(2);
+		expect(chained.$value().x.xx).to.equal(2);
+
+		expect(chained.$set(['x', 'xx'], 3));
+		expect(chained.$source.x.xx).to.equal(3);
+		expect(chained.$value().x.xx).to.equal(3);
+
+		expect(chained.$set('x.y.z', 1));
+		expect(chained.$source.x.y.z).to.equal(1);
+		expect(chained.$value().x.y.z).to.equal(1);
 	});
 
 
