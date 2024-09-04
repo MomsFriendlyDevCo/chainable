@@ -1,7 +1,7 @@
 {
   "name": "@momsfriendlydevco/chainable",
   "version": "1.0.0",
-  "description": "Tiny, no-dependency chainable object wrapper",
+  "description": "Tiny, zero-dependency chainable object wrapper",
   "scripts": {
     "build": "esbuild --platform=browser --format=esm --bundle lib/chainable.js --outfile=dist/chainable.js --minify",
     "lint": "eslint .",
