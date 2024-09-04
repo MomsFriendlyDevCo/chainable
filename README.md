@@ -2,7 +2,7 @@
 ============================
 Make any JavaScript object a chainable, functional interface.
 
-This library is _interntionally_ tiny and dependency free. The entire library, minified is less than 1kb!
+This library is _intentionally_ tiny and dependency free. The entire library, minified is less than 1kb!
 
 
 **Make the tiny Mitt event library chainable**
