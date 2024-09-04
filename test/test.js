@@ -15,8 +15,8 @@ describe('example chainables', ()=> {
 
 
 	it('wrap source object', ()=> {
-		expect(chained).to.have.property('$method');
-		expect(chained.$method).to.be.a('function');
+		expect(chained).to.have.property('$call');
+		expect(chained.$call).to.be.a('function');
 
 		expect(chained).to.have.property('$source');
 		expect(chained.$source).to.be.an('object');
@@ -24,12 +24,12 @@ describe('example chainables', ()=> {
 
 
 	it('call pure chainable methods', ()=> {
-		expect(chained.$method('a')).to.equal(chained);
+		expect(chained.$call('a')).to.equal(chained);
 	});
 
 
 	it('call mutating chainable methods', ()=> {
-		expect(chained.$method('setV', 2)).to.equal(chained);
+		expect(chained.$call('setV', 2)).to.equal(chained);
 		expect(chained.$source.v).to.equal(2);
 		expect(chained.$value().v).to.equal(2);
 	});

@@ -78,9 +78,9 @@ The chainable source object.
 Generally you don't want to access this directly.
 
 
-chainable.$method(name, ...args)
---------------------------------
-Also available as `chainable.method(name, ...args)` if there isn't any conflict with the name.
+chainable.$call(name, ...args)
+------------------------------
+Also available as `chainable.call(name, ...args)` if there isn't any conflict with the name.
 Call a method on source but ignore the response and return the chainable instance.
 
 
