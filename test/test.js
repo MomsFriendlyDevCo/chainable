@@ -34,17 +34,26 @@ describe('example chainables', ()=> {
 		expect(chained.$value().v).to.equal(2);
 	});
 
+	it('use getters', ()=> {
+		expect(chained.$get('v')).to.equal(2);
+		expect(chained.$get('x.xx')).to.equal(1);
+		expect(chained.$get(['x', 'xx'])).to.equal(1);
+	})
 
-	it('use simple setters', ()=> {
+
+	it('use simple getters/setters', ()=> {
 		expect(chained.$set('v', 3)).to.equal(chained);
 		expect(chained.$source.v).to.equal(3);
 		expect(chained.$value().v).to.equal(3);
+		expect(chained.$get('v')).to.equal(3);
 
 		expect(chained.$set({v: 4, z: 2})).to.equal(chained);
 		expect(chained.$source.v).to.equal(4);
 		expect(chained.$value().v).to.equal(4);
+		expect(chained.$get('v')).to.equal(4);
 		expect(chained.$source.z).to.equal(2);
 		expect(chained.$value().z).to.equal(2);
+		expect(chained.$get('z')).to.equal(2);
 	});
 
 

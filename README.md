@@ -55,7 +55,7 @@ document.append(
         .set('style.position', 'absolute') // Set a deeply nested property
         .set('style.top', '0px')
         .set('style.left', '0px')
-        .tap(el => el.$source.classList.add('red'))
+        .call('classList.add', 'red')
         .value() // Output the original raw DOMElement
 );
 ```
@@ -81,6 +81,7 @@ Generally you don't want to access this directly.
 chainable.$call(name, ...args)
 ------------------------------
 Also available as `chainable.call(name, ...args)` if there isn't any conflict with the name.
+As with `.$get` the name can be in dotted notation or array notation for deeply nested methods.
 Call a method on source but ignore the response and return the chainable instance.
 
 
@@ -89,8 +90,16 @@ chainable.$set(key, val)
 Also available as `chainable.set(key, val)` if there isn't any conflict with the name.
 Set one or more properties within a source object.
 Can be called as a simple key/val setter - `chainable.$set(keyName, value)` - or as an object - `chainable.$set({key1: val1, key2: val2})`
-The key can also contains dots (e.g. `this.is.a.nested.key`) or an array (e.g. `['this', 'is', 'a', 'nested', 'key']`) to set deeply nested properties.
+The key can also use dotted notation (e.g. `this.is.a.nested.key`) or an array notation (e.g. `['this', 'is', 'a', 'nested', 'key']`) to set deeply nested properties.
 Returns the chainable instance.
+
+
+chainable.$get(path)
+--------------------
+Also available as `chainable.get(path)` if there isn't any conflict with the name.
+Fetch a value from the source object, returning it.
+The path can also use dotted notation (e.g. `this.is.a.nested.key`) or an array notation (e.g. `['this', 'is', 'a', 'nested', 'key']`) to get deeply nested properties.
+Returns the value found at the path or undefined if none.
 
 
 chainable.$value()

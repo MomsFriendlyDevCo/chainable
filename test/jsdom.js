@@ -25,13 +25,17 @@ describe('chainable DOM', ()=> {
 
 
 	it('DOM class manipulation', ()=> {
+		let el;
 		expect(
-			chainedEl
+			el = chainedEl
 				.set('style.position', 'absolute')
 				.set('style.top', '0px')
 				.set('style.left', '0px')
-				.tap(c => c.$source.classList.add('red'))
+				.call('classList.add', 'red')
 		).to.not.throw;
+
+		expect(el.value().outerHTML).to.equal('<div style="position: absolute; top: 0px; left: 0px;" class="red"></div>');
+
 	});
 
 });
