@@ -48,7 +48,7 @@ document.body.append(widget);
 ```
 
 ```javascript
-// Equivelent using chainable
+// Equivalent using chainable
 document.append(
     chainable(document.createElement('div'));
         .addEventListener('click', ()=> { /* Handle clicks */ })
