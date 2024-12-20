@@ -118,3 +118,10 @@ chainable.$thru(callback)
 -------------------------
 Also available as `chainable.tap(callback)` if there isn't any conflict with the name.
 Run a callback inline as `(chainable) => { /* handler */ }`, take the returned value as the new `$source` and and return the chainable instance.
+
+
+chainable.$replace(newState)
+----------------------------
+Replace the target item if it looks like an object
+This is really only used when overwriting internal state or possibly replacing the state object due to a `$thru()` or `$call` return.
+Returns the chainable instance.
